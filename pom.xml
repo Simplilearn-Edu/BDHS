@@ -15,60 +15,71 @@
 		<scala.tools.version>2.10</scala.tools.version>
 	</properties>
 
-	<!-- repository to add org.apache.spark -->
-	<repositories>
-		<repository>
-			<id>cloudera-repo-releases</id>
-			<url>https://repository.cloudera.com/artifactory/repo/</url>
-		</repository>
-	</repositories>
-
 	<build>
 		<sourceDirectory>src/main/scala</sourceDirectory>
-		<testSourceDirectory>src/test/scala</testSourceDirectory>
 		<plugins>
 			<plugin>
-				<!-- see http://davidb.github.com/scala-maven-plugin -->
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
-				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>scala-compile-first</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>scala-test-compile</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+			<!-- This plugin compiles Java files -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.13</version>
+				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<useFile>false</useFile>
-					<disableXmlReport>true</disableXmlReport>
-					<includes>
-						<include>**/*Test.*</include>
-						<include>**/*Suite.*</include>
-					</includes>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
-
-			<!-- "package" command plugin -->
+			<!-- This plugin adds all dependencies to JAR file during 'package' command.
+            Pay EXTRA attention to the 'mainClass' tag.
+            You have to set name of class with entry point to program ('main' method) -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4.1</version>
+				<version>2.5.3</version>
 				<configuration>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>ScalaRunner</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 				<executions>
 					<execution>
-						<id>make-assembly</id>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.scala-tools</groupId>
-				<artifactId>maven-scala-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
@@ -80,5 +91,47 @@
 			<artifactId>spark-core_2.11</artifactId>
 			<version>2.0.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-graphx -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-graphx_2.11</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-sql_2.11</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.11.7</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-streaming -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-streaming_2.11</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-streaming-kafka-0-10 -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-client -->
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-client</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
 	</dependencies>
 </project>
