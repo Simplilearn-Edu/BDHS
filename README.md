@@ -47,4 +47,4 @@ Steps to run in local
 4. java -cp  target/scala.spark-0.0.1-SNAPSHOT-jar-with-dependencies.jar  com.com.simplilearn.bigdata.spark.SparkStreamingTrendingBrandMonthlyApp localhost:9092 transaction_data transaction_data local 2 5
 5. java -cp  target/scala.spark-0.0.1-SNAPSHOT-jar-with-dependencies.jar  com.com.simplilearn.bigdata.spark.SparkStreamingTrendingBrandMonthlyByRevenueApp localhost:9092 transaction_data transaction_data local 2 5
 6. java -cp  target/scala.spark-0.0.1-SNAPSHOT-jar-with-dependencies.jar  com.com.simplilearn.bigdata.spark.SparkStreamingTrendingCategoryMonthlyApp localhost:9092 transaction_data transaction_data local 2 5
-7.java -cp  target/scala.spark-0.0.1-SNAPSHOT-jar-with-dependencies.jar  com.com.simplilearn.bigdata.spark.PersistSparkLauncher /Users/coder/Downloads/dataset/complete_1/all_transaction_3.csv local <namenodes>
+7.java -cp  target/scala.spark-0.0.1-SNAPSHOT-jar-with-dependencies.jar  com.com.simplilearn.bigdata.spark.PersistSparkLauncher /Users/coder/Downloads/dataset/complete_1/all_transaction_3.csv local namenode_urls
