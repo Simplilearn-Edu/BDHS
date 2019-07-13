@@ -130,7 +130,7 @@ object PersistSparkLauncher {
           val result = table.get(get)
           if (result.size  == 0) {
             val put:Put = new Put(rowKey)
-            put.addColumn(Bytes.toBytes("brand_stats"), Bytes.toBytes("data"), Bytes.toBytes(row.get(2).asInstanceOf[Double]))
+            put.addColumn(Bytes.toBytes("brand_stats"), Bytes.toBytes("data"), Bytes.toBytes(row.get(2).asInstanceOf[Double].toString))
             table.put(put)
           }
         } finally try
@@ -160,7 +160,7 @@ object PersistSparkLauncher {
           val result = table.get(get)
           if (result.size  == 0) {
             val put:Put = new Put(rowKey)
-            put.addColumn(Bytes.toBytes("category_stats"), Bytes.toBytes("data"), Bytes.toBytes(row.get(2).asInstanceOf[Long]))
+            put.addColumn(Bytes.toBytes("category_stats"), Bytes.toBytes("data"), Bytes.toBytes(row.get(2).asInstanceOf[Long].toString))
             table.put(put)
           }
         } finally try
@@ -194,7 +194,7 @@ object PersistSparkLauncher {
           val result = table.get(get)
           if (result.size  == 0) {
             val put:Put = new Put(rowKey)
-            put.addColumn(Bytes.toBytes("category_stats"), Bytes.toBytes("data"), Bytes.toBytes(row.get(2).asInstanceOf[Double]))
+            put.addColumn(Bytes.toBytes("category_stats"), Bytes.toBytes("data"), Bytes.toBytes(row.get(2).asInstanceOf[Double].toString))
             table.put(put)
           }
         } finally try
