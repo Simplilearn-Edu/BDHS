@@ -24,6 +24,7 @@ object SparkLauncher {
     topFiveProfitableProductsSold(dataset)
     topFiveProfitableBrandCategorywise(dataset)
     bottomFiveBrandByOrderCountAndCategorywise(dataset)
+    topFiveProductByOrderCount(dataset)
     topFiveProfitableProductsSoldMonthly(dataset)
     bottomFiveLeastSellingProductsSoldMonthly(dataset)
   }
