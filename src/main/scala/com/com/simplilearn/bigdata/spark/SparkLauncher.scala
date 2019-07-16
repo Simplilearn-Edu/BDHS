@@ -156,7 +156,7 @@ object SparkLauncher {
     * @param dataset
     */
   private def topFiveProductByOrderCount(dataset: Dataset[Row]): Unit = {
-    var modifiedDataset = dataset.withColumn("Month", UDFUtils.toMonth(modifiedDataset("InvoiceDate"))).drop("InvoiceDate")
+    var modifiedDataset = dataset.withColumn("month", UDFUtils.toMonth(dataset("InvoiceDate"))).drop("InvoiceDate")
     modifiedDataset =    modifiedDataset.select("Month", "ProductCode", "Description", "Quantity").groupBy("Month", "ProductCode", "Description").agg(functions.sum("Quantity").as("Quantity"))
     var i = 0
     for (i <- 0 to 11) {
