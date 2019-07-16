@@ -155,9 +155,8 @@ object SparkLauncher {
     * @param dataset
     */
   private def topFiveProductByOrderCount(dataset: Dataset[Row]): Unit = {
-    var modifiedDataset = dataset.select("ProductCode", "Description", "Quantity").groupBy("ProductCode", "Description").agg(functions.sum("Quantity").as("Quantity")).sort(functions.desc("Quantity")).limit(5)
-    modifiedDataset = modifiedDataset.withColumn("Month", UDFUtils.toMonth(modifiedDataset("InvoiceDate"))).drop("InvoiceDate")
-    modifiedDataset = modifiedDataset.select("Month", "ProductCode", "Description", "Quantity").groupBy("Month", "ProductCode", "Description").agg(functions.sum("Quantity").as("Quantity"))
+    var modifiedDataset = dataset.withColumn("Month", UDFUtils.toMonth(modifiedDataset("InvoiceDate"))).drop("InvoiceDate")
+    modifiedDataset =    modifiedDataset.select("Month", "ProductCode", "Description", "Quantity").groupBy("Month", "ProductCode", "Description").agg(functions.sum("Quantity").as("Quantity"))
     var i = 0
     for (i <- 0 to 11) {
       val topProductsSoldMonthly = modifiedDataset.filter("month = " + i).sort(functions.desc("Quantity")).limit(5).withColumn("MonthName", UDFUtils.toMonthName(modifiedDataset("Month"))).drop("Month")
