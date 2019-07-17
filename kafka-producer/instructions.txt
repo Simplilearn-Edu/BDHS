@@ -1,0 +1,12 @@
+Steps to build
+
+System Requirements
+
+1. Gradle must be installed
+2. Kafka cluster should be up and running
+
+Go to kafka-producer directory
+
+1. gradle build jar
+2.java -cp build/libs/kafka-producer-1.0-SNAPSHOT.jar com.simplilearn.bigdata.kafka.KafkaProducerTest <broker_address> <topic_name> <file_path>
+
