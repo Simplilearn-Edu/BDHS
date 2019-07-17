@@ -1,0 +1,33 @@
+Create hive table
+
+
+CREATE TABLE director_movies (director_name STRING,ceremony STRING,year INT,category STRING,outcome STRING,original_language STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/user/learner_simplilearn/director_movies';
+
+Loading Data
+
+LOAD DATA INPATH '/user/learner_simplilearn/220k_awards_by_directors_case_study_5.csv' INTO TABLE director_movies;
+
+Check if data is inserted
+
+select * from director_movies limit 1;
+
+Solution_1
+
+select director_name from director_movies where outcome ='Won' and year =2011;
+
+Solution_2
+
+select distinct category from director_movies where ceremony = 'Berlin International Film Festival';
+
+Solution_3
+
+select director_name from director_movies where outcome ='Won' and original_language = 'fr';
+
+
+Solution_4
+
+select director_name, outcome , count(*) as total from director_movies group by outcome having total > 10;
+
+Drop tables
+
+DROP TABLE director_movies;

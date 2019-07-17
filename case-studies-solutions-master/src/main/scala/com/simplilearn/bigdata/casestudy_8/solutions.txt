@@ -1,0 +1,43 @@
+1.An E-commerce wants to show most trending brands of last 1 hour on their
+web portal.
+
+
+Let's understand the problem first.When you search clothing or watches or anything else you certainly
+check the brands. If e-commerece sit suggets on the basis of purchase or search data that few brands people
+are looking more. You can also give some rating system on the basis of viewing , adding to card or transaction.
+
+If you use here Hadoop in that case you won't be getting data real time because hadoop is kind of non real time
+processing. There are couple of solutions which you can use like Apache Storm which provides real time streaming.
+
+Spark provides best solution with it's streaming capability. It provides smooth integration with Kafka. You can
+provide any duration only on that much data stats will be computed.
+
+
+2. An E-commerce wants to calculate orders of last 5 years in mobile category.
+
+In this solution if you see you already have data means you can either use Hadoop or Spark.
+It depends on you totally you want result sooner or not.
+
+
+3. You have given product data of clicks and impressions. Click means when
+user click on product and render to product page. Impression means when
+you just check the product, or you can say product listing page or search
+page on Amazon. You have to create a model which can predict if any
+product on portal is eligible for click or not.
+
+In this you can use Spark because it provides rich machine learning libraries and can easy handle data.
+You can use hadoop to format or make data in structured format but spark will do very fast.
+
+
+4. An E-commerce wants to show most trending on their web portal in near
+real time.
+
+Whenever near real time or real time is needed means you have to provide stats on the basis of latest data which
+you are getting. Spark streaming is one of the best which can solve that.
+
+5. A financial institution wants to check if transaction is fraud or not.
+
+Checking if transaction is fraud or not will be done in real time. To check that you will either need some rules
+or some machine learning model which can read input data and do decisioning. Spark is best fir for that.
+
+Hadoop can be used when you are working on historical data but it never deals with real time data.
