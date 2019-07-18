@@ -21,7 +21,7 @@ object Solution_2 {
 
     val rowKey = Bytes.toBytes(year+"-"+accident_type)
     val get:Get = new Get(rowKey)
-    val table = connection.getTable(TableName.valueOf("traffic_accidents_yearly_1"))
+    val table = connection.getTable(TableName.valueOf("traffic_accidents_yearly"))
     val result = table.get(get)
     if (result.size != 0) {
       val data = result.getValue(Bytes.toBytes("total"), Bytes.toBytes("count"));
