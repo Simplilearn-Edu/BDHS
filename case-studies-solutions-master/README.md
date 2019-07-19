@@ -57,6 +57,7 @@ To change permission of directory
 
 */usr/local/spark/spark-2.2.0-bin-hadoop2.6/bin/spark-submit --master yarn --deploy-mode cluster --class  com.simplilearn.bigdata.casestudy_9.Solution_4 case-studies-solutions-1.0-SNAPSHOT-jar-with-dependencies.jar /data/data_csvs/bus-breakdown-and-delays_case_study_9.csv yarn*
 
+*/usr/local/spark/spark-2.2.0-bin-hadoop2.6/bin/spark-submit --master yarn --deploy-mode cluster --class  com.simplilearn.bigdata.casestudy_11.Solution_1 case-studies-solutions-1.0-SNAPSHOT-jar-with-dependencies.jar /data/data_csvs/diamonds_case_study_11.csv yarn*
 
 Steps to run in local
 
@@ -92,6 +93,7 @@ mvn clean install
 
 *java -cp target/case-studies-solutions-1.0-SNAPSHOT-jar-with-dependencies.jar  com.simplilearn.bigdata.casestudy_9.Solution_4 /Users/Downloads/CaseStudies/bus-breakdown-and-delays_case_study_9.csv local*
 
+*java -cp target/case-studies-solutions-1.0-SNAPSHOT-jar-with-dependencies.jar  com.simplilearn.bigdata.casestudy_11.Solution_1 /Users/Downloads/CaseStudies/diamonds_case_study_11.csv local*
 
 *java -cp target/case-studies-solutions-1.0-SNAPSHOT-jar-with-dependencies.jar  com.simplilearn.bigdata.casestudy_7.Solution_1 /Users/Downloads/CaseStudies/companies_case_study_7.csv*
 
